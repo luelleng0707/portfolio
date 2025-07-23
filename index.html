@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luelle Nguyen| Portfolio</title>
+  <title>Luelle Nguyen | Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class=" text-white font-sans" style="background-color: purple;">
-
+<body class="text-white font-sans bg-green-900">
+  
+  <!-- Hamburger Menu -->
+  <div class="hamburger " id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
   <!-- Sidebar -->
-  <div class="fixed top-0 left-0 h-full w-64 bg-purple-900 flex flex-col items-center py-8 space-y-6">
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-green-900 flex flex-col items-center py-8 space-y-6" id="sidebar">
     <img src="img/face.jpg" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-white">
     <h1 class="text-xl font-bold text-white text-center">Luelle Nguyen</h1>
     <div class="flex space-x-4">
@@ -22,18 +30,17 @@
         <a href="https://github.com/luelleng0707" class="hover:opacity-80">
             <img src="/icon/github.png" alt="GitHub" class="w-6 h-6">
         </a>
-</div>
+    </div>
     <nav class="flex flex-col space-y-4 mt-8">
-      <a href="#home" class="hover:text-blue-400 text-white">Home</a>
-      <a href="#about" class="hover:text-blue-400 text-white">About</a>
-      <a href="#resume" class="hover:text-blue-400 text-white">Resume</a>
-      <a href="#projects" class="hover:text-blue-400 text-white">Projects</a>
-      <a href="#" class="hover:text-blue-400 text-white">Download my CV</a>
+      <a href="#home" class="hover:text-blue-400 text-white nav-link">Home</a>
+      <a href="#about" class="hover:text-blue-400 text-white nav-link">About</a>
+      <a href="#resume" class="hover:text-blue-400 text-white nav-link">Resume</a>
+      <a href="#projects" class="hover:text-blue-400 text-white nav-link">Projects</a>
     </nav>
   </div>
-
+  
   <!-- Main Content -->
-  <div class="ml-64 min-h-screen relative">
+  <div class="main-content ml-64 min-h-screen relative">
     <!-- Landing Page -->
     <section id="home" class="relative flex items-center h-screen w-full" style="background-image: url('/img/bg-home.jpg'); background-size: cover; background-position: center;">
       <div class="relative text-left py-20 px-10">
@@ -41,51 +48,152 @@
         <p class="text-2xl mt-4">Just a girl looking for a job</p>
       </div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" class="py-20 px-10 bg-white text-purple-900">
-      <h2 class="text-3xl font-bold mb-4">About</h2>
-      <p class="max-w-2xl">[Write about yourself here, your background, values, and your journey.]</p>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="py-20 px-10 bg-white text-purple-900">
-      <div class="max-w-5xl mx-auto">
-        <div id="scroll-timeline">
-          <!-- ScrollTimeline component will be rendered here -->
+    <section id="about" class="py-20 px-10 bg-white text-green-900">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8 text-center">About</h2>
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-lg leading-relaxed mb-6">Hi! I'm Luelle Nguyen, a passionate developer who loves creating innovative solutions. I have experience in various technologies and enjoy working on challenging projects that make a difference.</p>
+          <p class="text-lg leading-relaxed">My journey started with a curiosity about how things work, and it has evolved into a passion for building meaningful digital experiences that solve real-world problems.</p>
         </div>
       </div>
     </section>
-
+    
+    <!-- Resume Section -->
+    <section id="resume" class="relative bg-white text-purple-900">
+      <div id="scroll-timeline" class="timeline-container w-full h-screen">
+        <!-- ScrollTimeline component will be rendered here -->
+      </div>
+    </section>
+    
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-10 bg-white text-purple-900">
-      <h2 class="text-3xl font-bold mb-4">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Example Project Card -->
-        <div class="bg-gray-900 rounded-lg p-4 shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold">Project Title</h3>
-          <p class="text-sm mt-2">Brief description of the project, tech stack, and impact.</p>
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-6 text-green-100">Featured Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- AI Study Assistant -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
+          <div class="text-4xl mb-4">🤖</div>
+          <h3 class="text-xl font-semibold mb-3 text-green-100">AI Study Assistant</h3>
+          <p class="text-green-200 mb-4 text-sm">An intelligent study companion that helps students organize their learning, track progress, and get personalized recommendations using modern web technologies and AI integration.</p>
+          <div class="flex gap-2">
+            <a href="https://luelleng0707.github.io/AI-study-assistant/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
+            <a href="https://github.com/luelleng0707/AI-study-assistant" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+          </div>
         </div>
-        <!-- Add more project cards here -->
+
+        <!-- Love-Death Project -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-xl font-semibold mb-3 text-green-100">Love-Death</h3>
+          <p class="text-green-200 mb-4 text-sm">An interactive web experience exploring the evolution of love through different time periods, featuring responsive design and immersive storytelling with grade A evaluation.</p>
+          <div class="flex gap-2">
+            <a href="https://luelleng0707.github.io/love-death/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
+            <a href="https://github.com/luelleng0707/love-death" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+          </div>
+        </div>
+
+        <!-- UnCity Project -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
+          <div class="text-4xl mb-4">🏙️</div>
+          <h3 class="text-xl font-semibold mb-3 text-green-100">UnCity</h3>
+          <p class="text-green-200 mb-4 text-sm">A responsive real estate platform showcasing property listings with modern UI/UX design and interactive features for Japanese company screening.</p>
+          <div class="flex gap-2">
+            <a href="https://luelleng0707.github.io/UnCity/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
+            <a href="https://github.com/luelleng0707/UnCity" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Portfolio Project -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
+          <div class="text-4xl mb-4">📄</div>
+          <h3 class="text-xl font-semibold mb-3 text-green-100">Portfolio Timeline</h3>
+          <p class="text-green-200 mb-4 text-sm">An interactive timeline portfolio showcasing my journey with animated floating widgets, skill progression bubbles, and responsive design.</p>
+          <div class="flex gap-2">
+            <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Current Page</a>
+            <a href="https://github.com/luelleng0707/portfolio" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
-
-  <script type="module">
-    // Example TypeScript-compatible interactivity placeholder
-    const links = document.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => console.log(`${link.textContent} clicked`));
+  
+  <!-- Timeline Script -->
+  <script src="component/ResumeTimeline.js"></script>
+  <script>
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      sidebar.classList.toggle('mobile-hidden');
     });
-
-    import ScrollTimeline from './component/ResumeTimeline.js';
-
-    const scrollTimelineContainer = document.getElementById('scroll-timeline');
-    if (scrollTimelineContainer) {
-      const scrollTimeline = ScrollTimeline();
-      scrollTimelineContainer.appendChild(scrollTimeline);
+    
+    // Close sidebar when clicking nav links on mobile
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          hamburger.classList.remove('active');
+          sidebar.classList.add('mobile-hidden');
+        }
+      });
+    });
+    
+    // Timeline visibility and initialization
+    let timelineInitialized = false;
+    
+    function initTimelineWhenVisible() {
+      const resumeSection = document.getElementById('resume');
+      const timelineContainer = document.getElementById('scroll-timeline');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !timelineInitialized) {
+            console.log('Resume section visible, initializing timeline...');
+            
+            // Add visible class for animation
+            timelineContainer.classList.add('visible');
+            
+            // Initialize timeline
+            if (typeof ScrollTimeline === 'function') {
+              const scrollTimeline = ScrollTimeline();
+              timelineContainer.appendChild(scrollTimeline);
+              timelineInitialized = true;
+              console.log('Timeline initialized successfully');
+            }
+          }
+        });
+      }, {
+        threshold: 0.3 // Trigger when 30% of resume section is visible
+      });
+      
+      observer.observe(resumeSection);
     }
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM loaded');
+      
+      // Initialize sidebar state for mobile
+      if (window.innerWidth <= 768) {
+        sidebar.classList.add('mobile-hidden');
+      }
+      
+      // Initialize timeline visibility observer
+      initTimelineWhenVisible();
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove('mobile-hidden');
+        hamburger.classList.remove('active');
+      } else {
+        sidebar.classList.add('mobile-hidden');
+      }
+    });
   </script>
-
 </body>
 </html>
