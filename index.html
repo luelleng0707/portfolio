@@ -9,53 +9,54 @@
 </head>
 <body class="text-white font-sans bg-green-900">
   
-  <!-- Hamburger Menu -->
-  <div class="hamburger " id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <!-- Hamburger Menu Button (visible only on mobile) -->
+  <button id="hamburger" class="md:hidden fixed top-4 left-4 z-50 p-3 bg-green-800 hover:bg-green-700 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+    <div class="space-y-1.5">
+      <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300 transform origin-center"></span>
+      <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span id="line3" class="block w-6 h-0.5 bg-white transition-all duration-300 transform origin-center"></span>
+    </div>
+  </button>
   
   <!-- Sidebar -->
-  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-green-900 flex flex-col items-center py-8 space-y-6" id="sidebar">
+  <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-64 bg-green-900 flex flex-col items-center py-8 space-y-6 z-40 transform transition-transform duration-300 ease-in-out md:transform-none md:translate-x-0 -translate-x-full">
+    <!-- Profile Section -->
     <img src="img/face.jpg" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-white">
     <h1 class="text-xl font-bold text-white text-center">Luelle Nguyen</h1>
-    <div class="flex space-x-4">
-        <a href="https://www.facebook.com/linh.phuong.671942/" class="hover:opacity-80">
-            <img src="icon/facebook.png" alt="Facebook" class="w-6 h-6">
-        </a>
-        <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-ph%C6%B0%C6%A1ng-linh-15368a21b/" class="hover:opacity-80">
-            <img src="icon/linkedin.png" alt="LinkedIn" class="w-6 h-6">
-        </a>
-        <a href="https://github.com/luelleng0707" class="hover:opacity-80">
-            <img src="icon/github.png" alt="GitHub" class="w-6 h-6">
-        </a>
-    </div>
-    <nav class="flex flex-col space-y-4 mt-8">
-      <a href="#home" class="hover:text-blue-400 text-white nav-link">Home</a>
-      <a href="#about" class="hover:text-blue-400 text-white nav-link">About</a>
-      <a href="#resume" class="hover:text-blue-400 text-white nav-link">Resume</a>
-      <a href="#projects" class="hover:text-blue-400 text-white nav-link">Projects</a>
+    
+    <!-- Navigation -->
+    <nav class="flex flex-col space-y-4 mt-8 w-full px-4">
+      <a href="#home" class="nav-link text-white hover:text-blue-400 hover:bg-white hover:bg-opacity-10 py-3 px-4 rounded-lg transition-all duration-300 text-center">Home</a>
+      <a href="#resume" class="nav-link text-white hover:text-blue-400 hover:bg-white hover:bg-opacity-10 py-3 px-4 rounded-lg transition-all duration-300 text-center">Resume</a>
+      <a href="#contact" class="nav-link text-white hover:text-blue-400 hover:bg-white hover:bg-opacity-10 py-3 px-4 rounded-lg transition-all duration-300 text-center">Contact</a>
     </nav>
   </div>
   
+  <!-- Overlay (for mobile when sidebar is open) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden transition-opacity duration-300"></div>
+  
   <!-- Main Content -->
-  <div class="main-content ml-64 min-h-screen relative">
+  <div class="main-content md:ml-64 min-h-screen relative">
     <!-- Landing Page -->
-    <section id="home" class="relative flex items-center h-screen w-full" style="background-image: url('img/bg-home.jpg'); background-size: cover; background-position: center;">
+    <section id="home" class="relative flex items-center h-screen w-full bg-fixed" style="background-image: url('img/bg-home.jpg'); background-size: cover; background-position: center;">
       <div class="relative text-left py-20 px-10">
-        <h1 class="text-5xl font-extrabold">Luelle Nguyen</h1>
-        <p class="text-2xl mt-4">Just a girl looking for a job</p>
-      </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-20 px-10 bg-white text-green-900">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center">About</h2>
-        <div class="max-w-4xl mx-auto text-center">
-          <p class="text-lg leading-relaxed mb-6">Hi! I'm Luelle Nguyen, a passionate developer who loves creating innovative solutions. I have experience in various technologies and enjoy working on challenging projects that make a difference.</p>
-          <p class="text-lg leading-relaxed">My journey started with a curiosity about how things work, and it has evolved into a passion for building meaningful digital experiences that solve real-world problems.</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Luelle Nguyen</h1>
+        
+        <!-- Typing Animation Section -->
+        <div class="text-lg sm:text-xl md:text-2xl mt-6 space-y-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-white">I am a</span>
+            <span id="typing-text" class="font-bold text-green-300 min-w-[300px]">Frontend Developer</span>
+            <span id="cursor" class="animate-pulse text-green-300 text-2xl">|</span>
+          </div>
+          
+          <!-- Short description -->
+          <p class="leading-relaxed text-green-100 max-w-2xl">
+            <span class="font-semibold text-yellow-300">Double degree student</span> combining 
+            <span class="font-bold text-purple-300">Finance</span> + 
+            <span class="font-bold text-blue-300">Programming</span> to build 
+            <span class="font-semibold text-green-300">innovative digital solutions</span>.
+          </p>
         </div>
       </div>
     </section>
@@ -67,55 +68,177 @@
       </div>
     </section>
     
-    <!-- Projects Section -->
-    <section class="mb-8">
-      <h2 class="text-2xl font-bold mb-6 text-green-100">Featured Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- AI Study Assistant -->
-        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
-          <div class="text-4xl mb-4">🤖</div>
-          <h3 class="text-xl font-semibold mb-3 text-green-100">AI Study Assistant</h3>
-          <p class="text-green-200 mb-4 text-sm">An intelligent study companion that helps students organize their learning, track progress, and get personalized recommendations using modern web technologies and AI integration.</p>
-          <div class="flex gap-2">
-            <a href="https://luelleng0707.github.io/AI-study-assistant/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
-            <a href="https://github.com/luelleng0707/AI-study-assistant" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+    <!-- Contact Section -->
+    <section id="contact" class="py-10 sm:py-20 px-4 sm:px-10 bg-gradient-to-br from-green-900 via-green-800 to-teal-900 text-white relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 border border-white rounded-full animate-pulse"></div>
+        <div class="absolute top-32 right-20 w-20 h-20 border border-white rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-24 h-24 border border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-32 right-1/3 w-16 h-16 border border-white rounded-full animate-pulse" style="animation-delay: 3s;"></div>
+      </div>
+      
+      <div class="max-w-6xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Let's Work Together!</h2>
+          <p class="text-lg sm:text-xl text-green-100 max-w-2xl mx-auto">
+            Ready to bring your ideas to life? I'm available for frontend development projects, 
+            freelance work, and full-time opportunities.
+          </p>
+        </div>
+        
+        <!-- Contact Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+          <!-- Download CV Card -->
+          <div class="contact-card bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 rounded-3xl p-6 sm:p-8 text-center hover:bg-opacity-15 transition-all duration-300">
+            <div class="mb-6">
+              <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold mb-3">Download My CV</h3>
+              <p class="text-green-100 mb-6 text-sm sm:text-base">Get a detailed overview of my experience, skills, and achievements in a professionally formatted resume.</p>
+              <a href="public/Resume 2.pdf" id="download-cv" class="download-btn inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Download CV
+              </a>
+            </div>
+          </div>
+          
+          <!-- Quick Contact Card -->
+          <div class="contact-card bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 rounded-3xl p-6 sm:p-8 hover:bg-opacity-15 transition-all duration-300">
+            <div class="mb-6">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold mb-4 text-center">Quick Contact</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  <a href="mailto:linhnguyenlizzy@gmail.com" class="hover:text-green-300 transition-colors text-sm sm:text-base break-all">linhnguyenlizzy@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                  <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-ph%C6%B0%C6%A1ng-linh-15368a21b/" target="_blank" class="hover:text-green-300 transition-colors text-sm sm:text-base">LinkedIn Profile</a>
+                </div>
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                  <a href="https://github.com/luelleng0707" target="_blank" class="hover:text-green-300 transition-colors text-sm sm:text-base">GitHub Portfolio</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        <!-- Contact Form -->
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 rounded-3xl p-6 sm:p-8 lg:p-12">
+            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Have a Project in Mind?</h3>
+            <form id="contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div class="form-group">
+                  <label for="email" class="block text-sm font-semibold mb-2 text-green-100">Your Email *</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent placeholder-white placeholder-opacity-60 text-white text-sm sm:text-base"
+                    placeholder="your.email@example.com"
+                  >
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="project-type" class="block text-sm font-semibold mb-2 text-green-100">Project Type</label>
+                <select 
+                  id="project-type" 
+                  name="project-type"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-white text-sm sm:text-base"
+                >
+                  <option value="">Select project type (optional)</option>
+                  <option value="website">Website Development</option>
+                  <option value="webapp">Web Application</option>
+                  <option value="ecommerce">E-commerce Site</option>
+                  <option value="landing">Landing Page</option>
+                  <option value="redesign">Website Redesign</option>
+                  <option value="maintenance">Website Maintenance</option>
+                  <option value="consultation">Technical Consultation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="block text-sm font-semibold mb-2 text-green-100">Project Details & Requirements *</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="5" 
+                  required
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent placeholder-white placeholder-opacity-60 text-white resize-none text-sm sm:text-base"
+                  placeholder="Tell me about your project! Include details like:
+• What kind of website/application do you need?
+• What features are important to you?
+• Do you have a preferred timeline?
+• What's your budget range?
+• Any design preferences or examples?
 
-        <!-- Love-Death Project -->
-        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
-          <div class="text-4xl mb-4">💻</div>
-          <h3 class="text-xl font-semibold mb-3 text-green-100">Love-Death</h3>
-          <p class="text-green-200 mb-4 text-sm">An interactive web experience exploring the evolution of love through different time periods, featuring responsive design and immersive storytelling with grade A evaluation.</p>
-          <div class="flex gap-2">
-            <a href="https://luelleng0707.github.io/love-death/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
-            <a href="https://github.com/luelleng0707/love-death" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+I'm excited to hear about your ideas!"
+                ></textarea>
+              </div>
+              
+              <div class="text-center">
+                <button 
+                  type="submit" 
+                  class="submit-btn bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 px-8 sm:px-12 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-3 mx-auto"
+                >
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                  </svg>
+                  Send Message
+                </button>
+                <p class="text-xs sm:text-sm text-green-200 mt-4">I'll get back to you within 24 hours!</p>
+              </div>
+            </form>
           </div>
         </div>
-
-        <!-- UnCity Project -->
-        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
-          <div class="text-4xl mb-4">🏙️</div>
-          <h3 class="text-xl font-semibold mb-3 text-green-100">UnCity</h3>
-          <p class="text-green-200 mb-4 text-sm">A responsive real estate platform showcasing property listings with modern UI/UX design and interactive features for Japanese company screening.</p>
-          <div class="flex gap-2">
-            <a href="https://luelleng0707.github.io/UnCity/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Live Demo</a>
-            <a href="https://github.com/luelleng0707/UnCity" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
-          </div>
-        </div>
-
-        <!-- Portfolio Project -->
-        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 hover:bg-opacity-20 transition-all duration-300 hover:transform hover:scale-105">
-          <div class="text-4xl mb-4">📄</div>
-          <h3 class="text-xl font-semibold mb-3 text-green-100">Portfolio Timeline</h3>
-          <p class="text-green-200 mb-4 text-sm">An interactive timeline portfolio showcasing my journey with animated floating widgets, skill progression bubbles, and responsive design.</p>
-          <div class="flex gap-2">
-            <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Current Page</a>
-            <a href="https://github.com/luelleng0707/portfolio" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors">GitHub</a>
+        
+        <!-- Footer -->
+        <div class="text-center mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-white border-opacity-20">
+          <p class="text-green-200 mb-4 text-sm sm:text-base">© 2025 Luelle Nguyen. Ready to build something amazing together!</p>
+          <div class="flex justify-center space-x-4 sm:space-x-6">
+            <a href="https://github.com/luelleng0707" target="_blank" class="social-link text-white hover:text-green-300 transition-colors p-2 hover:bg-opacity-10 rounded-full">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-ph%C6%B0%C6%A1ng-linh-15368a21b/" target="_blank" class="social-link text-white hover:text-green-300 transition-colors p-2 hover:bg-opacity-10 rounded-full">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="mailto:luelleng0707@gmail.com" class="social-link text-white hover:text-green-300 transition-colors p-2 hover:bg-opacity-10 rounded-full">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
+    
   </div>
   
   <!-- Timeline Script -->
@@ -124,21 +247,68 @@
     // Hamburger menu functionality
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
     const navLinks = document.querySelectorAll('.nav-link');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
     
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      sidebar.classList.toggle('mobile-hidden');
-    });
+    let isMenuOpen = false;
+    
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Open menu
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        overlay.classList.remove('hidden');
+        overlay.classList.add('block');
+        
+        // Animate hamburger to X
+        line1.classList.add('rotate-45', 'translate-y-2');
+        line2.classList.add('opacity-0');
+        line3.classList.add('-rotate-45', '-translate-y-2');
+      } else {
+        // Close menu
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0');
+        overlay.classList.add('hidden');
+        overlay.classList.remove('block');
+        
+        // Animate X back to hamburger
+        line1.classList.remove('rotate-45', 'translate-y-2');
+        line2.classList.remove('opacity-0');
+        line3.classList.remove('-rotate-45', '-translate-y-2');
+      }
+    }
+    
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
     
     // Close sidebar when clicking nav links on mobile
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          hamburger.classList.remove('active');
-          sidebar.classList.add('mobile-hidden');
+        if (window.innerWidth < 768 && isMenuOpen) {
+          toggleMenu();
         }
       });
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        // Reset mobile menu state when resizing to desktop
+        isMenuOpen = false;
+        sidebar.classList.remove('-translate-x-full', 'translate-x-0');
+        overlay.classList.add('hidden');
+        overlay.classList.remove('block');
+        
+        // Reset hamburger animation
+        line1.classList.remove('rotate-45', 'translate-y-2');
+        line2.classList.remove('opacity-0');
+        line3.classList.remove('-rotate-45', '-translate-y-2');
+      }
     });
     
     // Timeline visibility and initialization
@@ -172,28 +342,147 @@
       observer.observe(resumeSection);
     }
     
+    // Contact Form Handling
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Show loading state
+      submitBtn.innerHTML = `
+        <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+        Sending...
+      `;
+      submitBtn.disabled = true;
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Simulate form submission (replace with actual form handler)
+      setTimeout(() => {
+        // Show success message
+        submitBtn.innerHTML = `
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Message Sent!
+        `;
+        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        
+        // Reset form
+        this.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+        }, 3000);
+        
+        // You can add actual form submission logic here
+        console.log('Form data:', data);
+        
+      }, 2000);
+    });
+    
+    // Download CV functionality
+    document.getElementById('download-cv').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // You can replace this with actual CV download logic
+      const cvUrl = 'path/to/your/cv.pdf'; // Replace with actual CV path
+      
+      // For now, show a message (replace with actual download)
+      alert('CV download feature - Please add your actual CV file path!');
+      
+      // Actual download code (uncomment when you have a CV file):
+      // const link = document.createElement('a');
+      // link.href = cvUrl;
+      // link.download = 'Luelle_Nguyen_CV.pdf';
+      // link.click();
+    });
+    
+    // Typing animation functionality
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.getElementById('cursor');
+    
+    const texts = [
+      "Frontend Developer",
+      "College Student", 
+      "Finance Major at NEU Vietnam",
+      "Exchange Student at NYU Shanghai",
+      "Hackathon Champion",
+      "Problem Solver",
+      "Tech Enthusiast",
+      "Double Degree Pursuer"
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function typeWriter() {
+      const currentText = texts[textIndex];
+      
+      if (isDeleting) {
+        // Deleting characters
+        typingText.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50; // Faster deletion
+      } else {
+        // Typing characters
+        typingText.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100; // Normal typing speed
+      }
+      
+      // When word is complete
+      if (!isDeleting && charIndex === currentText.length) {
+        typingSpeed = 2000; // Pause at end
+        isDeleting = true;
+      } 
+      // When word is fully deleted
+      else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length; // Move to next text
+        typingSpeed = 500; // Pause before typing next word
+      }
+      
+      setTimeout(typeWriter, typingSpeed);
+    }
+    
+    // Start typing animation when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add cursor blinking animation
+      cursor.classList.add('cursor-blink');
+      
+      // Start typing after a short delay
+      setTimeout(typeWriter, 1000);
+    });
+    
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       console.log('DOM loaded');
       
-      // Initialize sidebar state for mobile
-      if (window.innerWidth <= 768) {
-        sidebar.classList.add('mobile-hidden');
-      }
-      
       // Initialize timeline visibility observer
       initTimelineWhenVisible();
     });
-    
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        sidebar.classList.remove('mobile-hidden');
-        hamburger.classList.remove('active');
-      } else {
-        sidebar.classList.add('mobile-hidden');
-      }
-    });
   </script>
+  
+  <style>
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .cursor-blink {
+      animation: blink 1s infinite;
+    }
+  </style>
 </body>
 </html>
