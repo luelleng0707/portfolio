@@ -6,6 +6,8 @@
   <title>Luelle Nguyen | Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Add EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="text-white font-sans bg-green-900">
   
@@ -38,8 +40,8 @@
   <!-- Main Content -->
   <div class="main-content md:ml-64 min-h-screen relative">
     <!-- Landing Page -->
-    <section id="home" class="relative flex items-center h-screen w-full bg-fixed" style="background-image: url('img/bg-home.jpg'); background-size: cover; background-position: center;">
-      <div class="relative text-left py-20 px-10">
+    <section id="home" class="relative flex items-center sm:items-center h-screen w-full bg-fixed home-bg">
+      <div class="relative text-left py-20 px-10 sm:py-20 sm:px-10">
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Luelle Nguyen</h1>
         
         <!-- Typing Animation Section -->
@@ -52,9 +54,9 @@
           
           <!-- Short description -->
           <p class="leading-relaxed text-green-100 max-w-2xl">
-            <span class="font-semibold text-yellow-300">Double degree student</span> combining 
+            <span class="font-semibold text-yellow-300">Double degree student</span> combining <br>
             <span class="font-bold text-purple-300">Finance</span> + 
-            <span class="font-bold text-blue-300">Programming</span> to build 
+            <span class="font-bold text-blue-300">Programming</span> <br>to build 
             <span class="font-semibold text-green-300">innovative digital solutions</span>.
           </p>
         </div>
@@ -83,7 +85,7 @@
         <div class="text-center mb-12 sm:mb-16">
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Let's Work Together!</h2>
           <p class="text-lg sm:text-xl text-green-100 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? I'm available for frontend development projects, 
+            Ready to bring your ideas to life? I'm available for frontend development  s, 
             freelance work, and full-time opportunities.
           </p>
         </div>
@@ -166,7 +168,7 @@
                 <select 
                   id="project-type" 
                   name="project-type"
-                  class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-white text-sm sm:text-base"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-green-800 text-sm sm:text-base"
                 >
                   <option value="">Select project type (optional)</option>
                   <option value="website">Website Development</option>
@@ -212,6 +214,11 @@ I'm excited to hear about your ideas!"
                 <p class="text-xs sm:text-sm text-green-200 mt-4">I'll get back to you within 24 hours!</p>
               </div>
             </form>
+            
+            <!-- Success Message -->
+            <div id="success-message" class="hidden text-green-500 text-center mt-4">
+              Your message has been sent successfully! I'll get back to you soon.
+            </div>
           </div>
         </div>
         
@@ -244,245 +251,338 @@ I'm excited to hear about your ideas!"
   <!-- Timeline Script -->
   <script src="component/ResumeTimeline.js"></script>
   <script>
-    // Hamburger menu functionality
-    const hamburger = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const line1 = document.getElementById('line1');
-    const line2 = document.getElementById('line2');
-    const line3 = document.getElementById('line3');
+  // Apply responsive styles using JavaScript
+  function applyResponsiveStyles() {
+    const homeSection = document.getElementById('home');
+    const homeBg = document.querySelector('.home-bg');
     
-    let isMenuOpen = false;
-    
-    function toggleMenu() {
-      isMenuOpen = !isMenuOpen;
+    // Apply mobile styles if screen is small
+    if (window.innerWidth <= 640) {
+      // Mobile specific adjustments
+      homeSection.classList.remove('items-center');
+      homeSection.classList.add('items-start');
+      homeSection.style.paddingTop = '12vh';
       
-      if (isMenuOpen) {
-        // Open menu
-        sidebar.classList.remove('-translate-x-full');
-        sidebar.classList.add('translate-x-0');
-        overlay.classList.remove('hidden');
-        overlay.classList.add('block');
-        
-        // Animate hamburger to X
-        line1.classList.add('rotate-45', 'translate-y-2');
-        line2.classList.add('opacity-0');
-        line3.classList.add('-rotate-45', '-translate-y-2');
-      } else {
-        // Close menu
-        sidebar.classList.add('-translate-x-full');
-        sidebar.classList.remove('translate-x-0');
-        overlay.classList.add('hidden');
-        overlay.classList.remove('block');
-        
-        // Animate X back to hamburger
-        line1.classList.remove('rotate-45', 'translate-y-2');
-        line2.classList.remove('opacity-0');
-        line3.classList.remove('-rotate-45', '-translate-y-2');
+      // Apply mobile background
+      if (homeBg) {
+        homeBg.style.backgroundImage = "url('img/phone-bg.jfif')";
+        homeBg.style.backgroundSize = 'cover';
+        homeBg.style.backgroundAttachment = 'fixed';
+        homeBg.style.backgroundPosition = 'center top';
+      }
+    } else {
+      // Desktop styles
+      homeSection.classList.remove('items-start');
+      homeSection.classList.add('items-center');
+      homeSection.style.paddingTop = '';
+      
+      // Apply desktop background
+      if (homeBg) {
+        homeBg.style.backgroundImage = "url('img/bg-home.jpg')";
+        homeBg.style.backgroundSize = 'cover';
+        homeBg.style.backgroundAttachment = 'fixed';
+        homeBg.style.backgroundPosition = 'center';
       }
     }
     
-    hamburger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
+    // Apply dark mode overlay if preferred
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      if (homeBg && !homeBg.querySelector('.dark-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'dark-overlay absolute inset-0 bg-black bg-opacity-20 pointer-events-none';
+        homeBg.appendChild(overlay);
+      }
+    }
+  }
+  
+  // Cursor blink animation using JavaScript
+  function startCursorBlink() {
+    const cursor = document.getElementById('cursor');
+    if (cursor) {
+      let visible = true;
+      setInterval(() => {
+        cursor.style.opacity = visible ? '0' : '1';
+        visible = !visible;
+      }, 1000);
+    }
+  }
+  
+  // Apply background images using JavaScript
+  function applyBackgroundImages() {
+    const homeBg = document.querySelector('.home-bg');
+    if (homeBg) {
+      // Set default desktop background
+      homeBg.style.backgroundImage = "url('img/bg-home.jpg')";
+      homeBg.style.backgroundSize = 'cover';
+      homeBg.style.backgroundPosition = 'center';
+      homeBg.style.backgroundAttachment = 'fixed';
+    }
+  }
+
+  // Existing hamburger menu functionality
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  
+  let isMenuOpen = false;
+  
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
     
-    // Close sidebar when clicking nav links on mobile
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 768 && isMenuOpen) {
-          toggleMenu();
+    if (isMenuOpen) {
+      // Open menu
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('block');
+      
+      // Animate hamburger to X
+      line1.classList.add('rotate-45', 'translate-y-2');
+      line2.classList.add('opacity-0');
+      line3.classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      // Close menu
+      sidebar.classList.add('-translate-x-full');
+      sidebar.classList.remove('translate-x-0');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('block');
+      
+      // Animate X back to hamburger
+      line1.classList.remove('rotate-45', 'translate-y-2');
+      line2.classList.remove('opacity-0');
+      line3.classList.remove('-rotate-45', '-translate-y-2');
+    }
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+  
+  // Close sidebar when clicking nav links on mobile
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 768 && isMenuOpen) {
+        toggleMenu();
+      }
+    });
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isMenuOpen) {
+      // Reset mobile menu state when resizing to desktop
+      isMenuOpen = false;
+      sidebar.classList.remove('-translate-x-full', 'translate-x-0');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('block');
+      
+      // Reset hamburger animation
+      line1.classList.remove('rotate-45', 'translate-y-2');
+      line2.classList.remove('opacity-0');
+      line3.classList.remove('-rotate-45', '-translate-y-2');
+    }
+    
+    // Reapply responsive styles on resize
+    applyResponsiveStyles();
+  });
+  
+  // Timeline visibility and initialization
+  let timelineInitialized = false;
+  
+  function initTimelineWhenVisible() {
+    const resumeSection = document.getElementById('resume');
+    const timelineContainer = document.getElementById('scroll-timeline');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !timelineInitialized) {
+          console.log('Resume section visible, initializing timeline...');
+          
+          // Add visible class for animation
+          timelineContainer.classList.add('visible');
+          
+          // Initialize timeline
+          if (typeof ScrollTimeline === 'function') {
+            const scrollTimeline = ScrollTimeline();
+            timelineContainer.appendChild(scrollTimeline);
+            timelineInitialized = true;
+            console.log('Timeline initialized successfully');
+          }
         }
       });
+    }, {
+      threshold: 0.3 // Trigger when 30% of resume section is visible
     });
     
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768 && isMenuOpen) {
-        // Reset mobile menu state when resizing to desktop
-        isMenuOpen = false;
-        sidebar.classList.remove('-translate-x-full', 'translate-x-0');
-        overlay.classList.add('hidden');
-        overlay.classList.remove('block');
-        
-        // Reset hamburger animation
-        line1.classList.remove('rotate-45', 'translate-y-2');
-        line2.classList.remove('opacity-0');
-        line3.classList.remove('-rotate-45', '-translate-y-2');
-      }
-    });
-    
-    // Timeline visibility and initialization
-    let timelineInitialized = false;
-    
-    function initTimelineWhenVisible() {
-      const resumeSection = document.getElementById('resume');
-      const timelineContainer = document.getElementById('scroll-timeline');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !timelineInitialized) {
-            console.log('Resume section visible, initializing timeline...');
-            
-            // Add visible class for animation
-            timelineContainer.classList.add('visible');
-            
-            // Initialize timeline
-            if (typeof ScrollTimeline === 'function') {
-              const scrollTimeline = ScrollTimeline();
-              timelineContainer.appendChild(scrollTimeline);
-              timelineInitialized = true;
-              console.log('Timeline initialized successfully');
-            }
-          }
-        });
-      }, {
-        threshold: 0.3 // Trigger when 30% of resume section is visible
-      });
-      
-      observer.observe(resumeSection);
-    }
-    
-    // Contact Form Handling
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = document.querySelector('.submit-btn');
-      const originalText = submitBtn.innerHTML;
-      
-      // Show loading state
-      submitBtn.innerHTML = `
-        <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-        </svg>
-        Sending...
-      `;
-      submitBtn.disabled = true;
-      
-      // Get form data
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
-      
-      // Simulate form submission (replace with actual form handler)
-      setTimeout(() => {
-        // Show success message
-        submitBtn.innerHTML = `
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          Message Sent!
-        `;
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-        
-        // Reset form
-        this.reset();
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.background = '';
-        }, 3000);
-        
-        // You can add actual form submission logic here
-        console.log('Form data:', data);
-        
-      }, 2000);
-    });
-    
-    // Download CV functionality
-    document.getElementById('download-cv').addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      // You can replace this with actual CV download logic
-      const cvUrl = 'path/to/your/cv.pdf'; // Replace with actual CV path
-      
-      // For now, show a message (replace with actual download)
-      alert('CV download feature - Please add your actual CV file path!');
-      
-      // Actual download code (uncomment when you have a CV file):
-      // const link = document.createElement('a');
-      // link.href = cvUrl;
-      // link.download = 'Luelle_Nguyen_CV.pdf';
-      // link.click();
-    });
-    
-    // Typing animation functionality
-    const typingText = document.getElementById('typing-text');
-    const cursor = document.getElementById('cursor');
-    
-    const texts = [
-      "Frontend Developer",
-      "College Student", 
-      "Finance Major at NEU Vietnam",
-      "Exchange Student at NYU Shanghai",
-      "Hackathon Champion",
-      "Problem Solver",
-      "Tech Enthusiast",
-      "Double Degree Pursuer"
-    ];
-    
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    
-    function typeWriter() {
-      const currentText = texts[textIndex];
-      
-      if (isDeleting) {
-        // Deleting characters
-        typingText.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50; // Faster deletion
-      } else {
-        // Typing characters
-        typingText.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100; // Normal typing speed
-      }
-      
-      // When word is complete
-      if (!isDeleting && charIndex === currentText.length) {
-        typingSpeed = 2000; // Pause at end
-        isDeleting = true;
-      } 
-      // When word is fully deleted
-      else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length; // Move to next text
-        typingSpeed = 500; // Pause before typing next word
-      }
-      
-      setTimeout(typeWriter, typingSpeed);
-    }
-    
-    // Start typing animation when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      // Add cursor blinking animation
-      cursor.classList.add('cursor-blink');
-      
-      // Start typing after a short delay
-      setTimeout(typeWriter, 1000);
-    });
-    
-    // Initialize when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('DOM loaded');
-      
-      // Initialize timeline visibility observer
-      initTimelineWhenVisible();
-    });
-  </script>
+    observer.observe(resumeSection);
+  }
   
-  <style>
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
+  // Contact Form Handling with EmailJS
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const submitBtn = document.querySelector('.submit-btn');
+    const successMessage = document.getElementById('success-message');
+    const originalText = submitBtn.innerHTML;
+
+    // Show loading state
+    submitBtn.innerHTML = `
+      <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+      </svg>
+      Sending...
+    `;
+    submitBtn.disabled = true;
+
+    // Get form data
+    const formData = new FormData(this);
+    const templateParams = {
+      from_name: formData.get('email').split('@')[0], // Extract name from email
+      from_email: formData.get('email'),
+      message: formData.get('message'),
+      reply_to: formData.get('email'),
+    };
+
+    // Initialize EmailJS with your public key
+    emailjs.init("EEd3wlZh3HI2hvhxA");
+
+    // Send email using your corrected service ID and template ID
+    emailjs
+      .send("service_53vb0h7", "template_q3n8fda", templateParams) // Corrected service ID
+      .then(
+        function (response) {
+          console.log("Email sent successfully!", response.status, response.text);
+
+          // Show success message
+          successMessage.classList.remove('hidden');
+          successMessage.classList.add('block');
+
+          // Update button text and style
+          submitBtn.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Message Sent!
+          `;
+          submitBtn.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+
+          // Reset form
+          document.getElementById("contact-form").reset();
+
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = "";
+            successMessage.classList.remove('block');
+            successMessage.classList.add('hidden');
+          }, 3000);
+        },
+        function (error) {
+          console.error("Email sending failed:", error);
+
+          // Show error message
+          submitBtn.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Failed to Send
+          `;
+          submitBtn.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
+
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = "";
+          }, 3000);
+        }
+      );
+  });
+  
+  // Download CV functionality
+  document.getElementById('download-cv').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // You can replace this with actual CV download logic
+    const cvUrl = 'path/to/your/cv.pdf'; // Replace with actual CV path
+    
+    // For now, show a message (replace with actual download)
+    alert('CV download feature - Please add your actual CV file path!');
+    
+    // Actual download code (uncomment when you have a CV file):
+    // const link = document.createElement('a');
+    // link.href = cvUrl;
+    // link.download = 'Luelle_Nguyen_CV.pdf';
+    // link.click();
+  });
+  
+  // Typing animation functionality
+  const typingText = document.getElementById('typing-text');
+  const cursor = document.getElementById('cursor');
+  
+  const texts = [
+    "Frontend Developer",
+    "College Student", 
+    "Finance Major at NEU Vietnam",
+    "Exchange Student at NYU Shanghai",
+    "Hackathon Champion",
+    "Problem Solver",
+    "Tech Enthusiast",
+    "Double Degree Pursuer"
+  ];
+  
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  
+  function typeWriter() {
+    const currentText = texts[textIndex];
+    
+    if (isDeleting) {
+      // Deleting characters
+      typingText.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 50; // Faster deletion
+    } else {
+      // Typing characters
+      typingText.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 100; // Normal typing speed
     }
     
-    .cursor-blink {
-      animation: blink 1s infinite;
+    // When word is complete
+    if (!isDeleting && charIndex === currentText.length) {
+      typingSpeed = 2000; // Pause at end
+      isDeleting = true;
+    } 
+    // When word is fully deleted
+    else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length; // Move to next text
+      typingSpeed = 500; // Pause before typing next word
     }
-  </style>
+    
+    setTimeout(typeWriter, typingSpeed);
+  }
+  
+  // Start typing animation when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    // Apply initial styles
+    applyBackgroundImages();
+    applyResponsiveStyles();
+    startCursorBlink();
+    
+    // Start typing after a short delay
+    setTimeout(typeWriter, 1000);
+    
+    // Initialize timeline visibility observer
+    initTimelineWhenVisible();
+  });
+  </script>
 </body>
 </html>
