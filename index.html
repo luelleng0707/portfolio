@@ -506,18 +506,8 @@ I'm excited to hear about your ideas!"
   // Download CV functionality
   document.getElementById('download-cv').addEventListener('click', function(e) {
     e.preventDefault();
-    
-    // You can replace this with actual CV download logic
-    const cvUrl = 'path/to/your/cv.pdf'; // Replace with actual CV path
-    
-    // For now, show a message (replace with actual download)
-    alert('CV download feature - Please add your actual CV file path!');
-    
-    // Actual download code (uncomment when you have a CV file):
-    // const link = document.createElement('a');
-    // link.href = cvUrl;
-    // link.download = 'Luelle_Nguyen_CV.pdf';
-    // link.click();
+    const cvUrl = 'public/front%20end%20CV.pdf';
+    window.open(cvUrl, '_blank');
   });
   
   // Typing animation functionality
